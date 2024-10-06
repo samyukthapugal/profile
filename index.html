@@ -51,15 +51,21 @@
                     <img loading="lazy" class="profile-image" src="images/long.webp" alt="Samyuktha's Profile Picture">
                 </div>
             </div>
-            
-            <div class="details col-6 pt-5 mt-5 pe-5 mE-5" id="myDiv">
+
+            <div class="row">
+                <div class="image-container2 pt-5 mt-5 ps-5 ms-5">
+                    <img loading="lazy" class="profile-image2" src="images/cropped_profile.webp" alt="Samyuktha's Profile Picture">
+                </div>
+            </div>
+
+            <div class="details col-6 pt-5 mt-5 ps-2 ms-2 pe-5 mE-5" id="myDiv">
                 <div class="section-heading">
                     <div class="heading">
                       <h2>About Me</h2>
                     </div>
                 </div>
                 <div class="text-container">
-                    <p class="text-body-1"><br>Penultimate year student at Singapore Manegement University.<br><br>
+                    <p class="text-body-1"><br>Penultimate year student at Singapore Manegement University.<br>BSc Information Systems<br>Majoring in Business Analytics & Artificial Intelligence<br><br>
                     Hi, I'm Samyuktha. I value working on meaningful projects that challenge me. An extrovert by nature, I enjoy collaborating and am fueled by picking up new experiences & skills.
                     <br><br>When I am not developing or designing, I enjoy letting my creative side run wild through dance
                     <a href="https://www.instagram.com/royalusion/" class="scroll-link">(@Royalusion)</a>
@@ -154,6 +160,52 @@
 
         </div>
     </section>
+
+    <section aria-label="projects" id="projects-mobile-view">
+        <div class="container">
+            <div class="row">
+                <div class="section-heading pt-5 mt-5 ps-3 ms-3">
+                    <div class="heading">
+                        <h2>Projects</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="justify-content-center row ps-3 ms-3 pt-4 mt-4 smallheader">
+                ECOmmunity 🌱
+            </div>
+            <div class="row ps-4 ms-4 pt-3 mt-3">
+                <div class="card shadow p-3 mb-5 bg-body rounded" style="width: 20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Problem</h5>
+                        <p class="card-text-2 py-4">
+                            Singapore is highly dependent on imported food. However, individual citizens have no avenue to solve this problem even if they wish to do so.
+                        </p>
+                        <h5 class="card-title">Solution</h5>
+                        <ul class="card-text py-4">
+                            <li style="list-style-type: circle;">A platform for citizens to find spaces to grow their own food to reduce dependency.</li>
+                            <li style="list-style-type: circle;">Bond and learn with other citizens over sustainability related matters.</li>
+                        </ul>
+                        <h5 class="card-title">Features</h5>
+                            <ul class="card-text py-4">
+                                <li style="list-style-type: circle;">Sign up & Log in</li>
+                                <li style="list-style-type: circle;">Host, Join, Comment and Sort events</li>
+                                <li style="list-style-type: circle;">Locate and Save community gardens in Singapore</li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+                
+                <!--website display-->
+                <div class="row"></div>
+                <div class="row">
+                    <a href="https://github.com/sriyanope/G7-IS216-project" class="scroll-link exclude-link">
+                    <img loading="lazy" class="profile-image"   style="height: 715px; object-fit: cover; object-position: 50% 50%;;"
+                    src="images/portfolio (1)_page-0001.webp" alt="Webpage Display" ></a>
+                </div>
+                </div>
+
+        </div>
+    </section>
     
     <!--contact me-->
     <section aria-label="contact" id="contact">
@@ -165,7 +217,7 @@
             <div class="row">                
                 <div class="skillsbody ps-5 ms-5 pt-4 mt-4">
                     <img loading="lazy" style="height: 30px; width: 30px"
-                    src="images/email.png" alt="email" ></a> &nbsp &nbsp samyukthapugalanthi@gmail.com 
+                    src="images/email.png" alt="email" ></a> &nbsp &nbsp pugalanthisamyuktha@gmail.com 
                 </span>                
                 </div>
             </div>
@@ -203,7 +255,6 @@
             const excludeLink = document.querySelector('.exclude-link');
     
             if (verticalScrollPx < 500) {
-                // Reset colors to black when scrolling back to the top
                 document.body.style.backgroundColor = '#FFFAF6';
                 document.getElementById('navbarfixed').style.backgroundColor = '#FFFAF6';
                 document.body.style.color = 'black';
@@ -254,30 +305,32 @@
             }
         }
     
-        // scrolling
         const myDiv = document.getElementById('myDiv');
         const header = document.querySelector('header');
         const imageContainer = document.querySelector('.image-container');
-    
+
         window.addEventListener('scroll', () => {
             const headerHeight = header.offsetHeight;
             const imageContainerRect = imageContainer.getBoundingClientRect();
             const scrollPosition = window.scrollY;
-    
-            if (scrollPosition > headerHeight) {
-                myDiv.style.position = 'relative';
-                myDiv.style.top = Math.min(scrollPosition - headerHeight, imageContainerRect.bottom - headerHeight) + 'px';
+
+            if (window.innerWidth > 700) {
+                if (scrollPosition > headerHeight) {
+                    myDiv.style.position = 'relative';
+                    myDiv.style.top = Math.min(scrollPosition - headerHeight * 2, imageContainerRect.bottom - headerHeight * 4) + 'px';
+                } else {
+                    myDiv.style.position = 'static';
+                }
+
+                const paddingBetween = 20; 
+                myDiv.style.top = (parseInt(myDiv.style.top) + paddingBetween) + 'px';
             } else {
                 myDiv.style.position = 'static';
+                myDiv.style.top = '0px'; 
             }
-    
-            const paddingBetween = 20; // You can adjust this value
-            myDiv.style.top = (parseInt(myDiv.style.top) + paddingBetween) + 'px';
-    
-            // Call the color change function
-            handleColorChanges();
+
         });
-    
+
         // bg
         window.addEventListener('scroll', handleColorChanges);
     
